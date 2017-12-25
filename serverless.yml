@@ -1,0 +1,25 @@
+service:
+  name: twe
+
+# Add the serverless-webpack plugin
+plugins:
+  - serverless-webpack
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  region: us-east-2
+  stage: dev
+
+functions:
+  api:
+    handler: src/api.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+      - http:
+          path: /{any+}
+          method: ANY
+
+  
